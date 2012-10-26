@@ -143,9 +143,9 @@ config.configFile(process.argv[2], function (config, oldConfig) {
             if (! timers[key]) {
               timers[key] = [];
             }
-            timers[key].push(Number(fields[0] || 0));
+            timers[key].push(Number(fields[0]) || 0);
           } else if (fields[1].trim() == "g") {
-            gauges[key] = Number(fields[0] || 0);
+            gauges[key] = Number(fields[0]) || 0;
           } else if (fields[1].trim() == "s") {
             if (! sets[key]) {
               sets[key] = new set.Set();
@@ -165,7 +165,7 @@ config.configFile(process.argv[2], function (config, oldConfig) {
             if (! counters[key]) {
               counters[key] = 0;
             }
-            counters[key] += Number(fields[0] || 1) * (1 / sampleRate);
+            counters[key] += (Number(fields[0]) || 1) * (1 / sampleRate);
           }
         }
       }
